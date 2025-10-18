@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To Infinity and Beyond! 🚀</title>
+    <title>A Marvel Love Story 💕</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;700&display=swap');
         
         * {
             margin: 0;
@@ -14,108 +14,140 @@
         }
 
         body {
-            font-family: 'Orbitron', sans-serif;
-            background: linear-gradient(135deg, #0a0e27 0%, #1a1a3e 25%, #2d1b4e 50%, #1a1a3e 75%, #0a0e27 100%);
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #0d0d0d 0%, #1a0a0a 50%, #0d0d0d 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
             overflow: hidden;
-            animation: galaxyShift 20s ease-in-out infinite;
         }
 
-        @keyframes galaxyShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+        .background-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, #ff0000 2px, #ff0000 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, #ff0000 2px, #ff0000 4px);
+            pointer-events: none;
         }
 
-        .stars {
+        .particles {
             position: absolute;
             width: 100%;
             height: 100%;
             overflow: hidden;
         }
 
-        .star {
+        .particle {
             position: absolute;
-            background: white;
+            background: #ffd700;
             border-radius: 50%;
-            animation: twinkle 3s infinite;
+            animation: float 8s infinite;
+            opacity: 0.6;
         }
 
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.5); }
-        }
-
-        .shooting-star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: white;
-            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
-            animation: shoot 2s linear infinite;
-        }
-
-        @keyframes shoot {
-            0% {
-                transform: translateX(0) translateY(0);
-                opacity: 1;
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.6;
             }
             100% {
-                transform: translateX(-300px) translateY(300px);
-                opacity: 0;
+                transform: translateY(-100vh) translateX(50px);
             }
         }
 
         .container {
-            background: rgba(20, 20, 50, 0.9);
-            padding: 50px 60px;
-            border-radius: 30px;
-            border: 3px solid #00ff88;
-            box-shadow: 0 0 50px rgba(0, 255, 136, 0.4), 
-                        inset 0 0 30px rgba(138, 43, 226, 0.2);
+            background: rgba(20, 10, 10, 0.95);
+            padding: 60px 70px;
+            border-radius: 20px;
+            border: 2px solid #e50914;
+            box-shadow: 0 0 60px rgba(229, 9, 20, 0.5),
+                        inset 0 0 40px rgba(255, 215, 0, 0.1);
             text-align: center;
-            max-width: 650px;
+            max-width: 700px;
             width: 90%;
             position: relative;
             z-index: 10;
             backdrop-filter: blur(10px);
         }
 
-        .buzz-logo {
-            font-size: 18px;
-            color: #00ff88;
-            margin-bottom: 20px;
-            text-transform: uppercase;
+        .marvel-badge {
+            display: inline-block;
+            background: #e50914;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 20px;
             letter-spacing: 3px;
-            text-shadow: 0 0 20px rgba(0, 255, 136, 0.8);
+            margin-bottom: 25px;
+            box-shadow: 0 0 20px rgba(229, 9, 20, 0.6);
         }
 
         h1 {
-            color: #00ff88;
-            font-size: 32px;
-            margin-bottom: 15px;
-            text-shadow: 0 0 30px rgba(0, 255, 136, 0.6),
-                         0 0 60px rgba(138, 43, 226, 0.4);
-            font-weight: 900;
-            letter-spacing: 2px;
+            font-family: 'Bebas Neue', cursive;
+            color: #ffd700;
+            font-size: 42px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.8),
+                         0 0 60px rgba(229, 9, 20, 0.4);
+            letter-spacing: 3px;
         }
 
         .subtitle {
-            color: #a78bfa;
-            font-size: 16px;
-            margin-bottom: 35px;
-            font-weight: 400;
+            color: #cccccc;
+            font-size: 18px;
+            margin-bottom: 40px;
+            font-weight: 300;
+            line-height: 1.6;
         }
 
         .question {
-            font-size: 24px;
+            font-size: 26px;
             color: #ffffff;
             margin-bottom: 35px;
-            font-weight: 700;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .input-group {
+            margin: 30px 0;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 18px 25px;
+            font-size: 18px;
+            border: 2px solid #e50914;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        input[type="text"]:focus, textarea:focus {
+            border-color: #ffd700;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
         }
 
         .options {
@@ -126,20 +158,18 @@
         }
 
         button {
-            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+            background: linear-gradient(135deg, #e50914 0%, #b20710 100%);
             color: white;
-            border: 2px solid #00ff88;
-            padding: 20px 40px;
-            font-size: 18px;
-            border-radius: 15px;
+            border: 2px solid #ffd700;
+            padding: 18px 50px;
+            font-size: 20px;
+            border-radius: 10px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             font-weight: 700;
-            font-family: 'Orbitron', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 5px 25px rgba(138, 43, 226, 0.4),
-                        0 0 20px rgba(0, 255, 136, 0.3);
+            font-family: 'Bebas Neue', cursive;
+            letter-spacing: 2px;
+            box-shadow: 0 5px 25px rgba(229, 9, 20, 0.4);
             position: relative;
             overflow: hidden;
         }
@@ -152,110 +182,80 @@
             width: 0;
             height: 0;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 215, 0, 0.3);
             transform: translate(-50%, -50%);
             transition: width 0.6s, height 0.6s;
         }
 
         button:hover::before {
-            width: 300px;
-            height: 300px;
+            width: 400px;
+            height: 400px;
         }
 
         button:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 40px rgba(138, 43, 226, 0.6),
-                        0 0 40px rgba(0, 255, 136, 0.5);
-            border-color: #a78bfa;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(229, 9, 20, 0.6),
+                        0 0 30px rgba(255, 215, 0, 0.5);
+            border-color: #ffffff;
         }
 
         button:active {
-            transform: translateY(-2px) scale(1.02);
-        }
-
-        .message {
-            font-size: 22px;
-            margin-top: 25px;
-            font-weight: 700;
-            animation: fadeIn 0.5s ease;
-            text-shadow: 0 0 10px currentColor;
-        }
-
-        .success {
-            color: #00ff88;
-            text-shadow: 0 0 20px #00ff88;
-        }
-
-        .error {
-            color: #ff4757;
-            text-shadow: 0 0 20px #ff4757;
+            transform: translateY(-2px);
         }
 
         .final-message {
-            font-size: 36px;
-            color: #00ff88;
-            margin: 30px 0 20px 0;
-            animation: pulse 2s infinite;
-            text-shadow: 0 0 30px #00ff88,
-                         0 0 60px #8b5cf6;
-            font-weight: 900;
+            animation: fadeInScale 1s ease;
         }
 
-        .romantic-text {
+        .final-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 48px;
             color: #ffd700;
-            font-size: 22px;
-            margin: 25px 0;
-            font-weight: 600;
-            line-height: 1.6;
-            text-shadow: 0 0 15px #ffd700;
-            animation: glow 3s ease-in-out infinite;
+            margin: 30px 0;
+            text-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
+            animation: glow 2s ease-in-out infinite;
         }
 
-        .infinity-text {
-            color: #a78bfa;
-            font-size: 24px;
-            margin: 20px 0;
-            font-weight: 700;
-            text-shadow: 0 0 20px #a78bfa;
-            line-height: 1.5;
-        }
-
-        .thank-you-text {
+        .final-text {
             color: #ffffff;
-            font-size: 20px;
-            margin-top: 25px;
-            font-weight: 600;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            font-size: 24px;
+            line-height: 1.8;
+            margin: 25px 0;
+            font-weight: 300;
         }
 
         .name-highlight {
-            color: #00ff88;
-            font-weight: 900;
-            text-shadow: 0 0 25px #00ff88;
+            color: #ffd700;
+            font-weight: 700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+        }
+
+        .heart-effect {
+            display: inline-block;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            font-size: 30px;
+            margin: 0 10px;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.3); }
+            50% { transform: scale(1); }
         }
 
         @keyframes glow {
-            0%, 100% { text-shadow: 0 0 15px #ffd700; }
-            50% { text-shadow: 0 0 30px #ffd700, 0 0 50px #ffd700; }
+            0%, 100% { text-shadow: 0 0 40px rgba(255, 215, 0, 0.8); }
+            50% { text-shadow: 0 0 60px rgba(255, 215, 0, 1), 0 0 80px rgba(229, 9, 20, 0.6); }
         }
 
-        @keyframes fadeIn {
+        @keyframes fadeInScale {
             from {
                 opacity: 0;
-                transform: translateY(-20px);
+                transform: scale(0.8);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% {
                 transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
             }
         }
 
@@ -263,263 +263,270 @@
             display: none;
         }
 
-        .rocket {
-            position: fixed;
-            font-size: 40px;
-            animation: flyRocket 3s ease-in-out infinite;
-            pointer-events: none;
+        .spark {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ffd700;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #ffd700;
+            animation: sparkle 2s ease-out forwards;
         }
 
-        @keyframes flyRocket {
+        @keyframes sparkle {
             0% {
-                transform: translateX(-100px) translateY(100vh) rotate(-45deg);
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
             }
             100% {
-                transform: translateX(100vw) translateY(-100px) rotate(-45deg);
+                transform: translate(var(--tx), var(--ty)) scale(0);
+                opacity: 0;
             }
         }
 
-        .planet {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.3;
-            animation: float 8s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .glow-ring {
-            position: absolute;
-            width: 150px;
-            height: 150px;
-            border: 3px solid #00ff88;
-            border-radius: 50%;
-            top: -75px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: rotate 10s linear infinite;
-            opacity: 0.3;
-        }
-
-        @keyframes rotate {
-            from { transform: translateX(-50%) rotate(0deg); }
-            to { transform: translateX(-50%) rotate(360deg); }
-        }
-
-        .heart-icon {
-            display: inline-block;
-            animation: heartbeat 1.5s ease-in-out infinite;
-        }
-
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            25% { transform: scale(1.2); }
-            50% { transform: scale(1); }
+        .motivational-box {
+            background: linear-gradient(135deg, rgba(229, 9, 20, 0.2) 0%, rgba(255, 215, 0, 0.1) 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            margin: 20px 0;
         }
     </style>
 </head>
 <body>
-    <div class="stars" id="starsContainer"></div>
+    <div class="background-pattern"></div>
+    <div class="particles" id="particles"></div>
 
     <div class="container">
-        <div class="glow-ring"></div>
-        <div class="buzz-logo">⭐ Space Ranger Mission ⭐</div>
-        <h1>TO INFINITY AND BEYOND! 🚀</h1>
-        <div class="subtitle">Complete the mission, Space Ranger!</div>
-        
-        <!-- Question 1 -->
-        <div id="q1" class="question-block">
-            <div class="question">🌟 Mission 1: Siapa presiden Indonesia sekarang?</div>
-            <div class="options">
-                <button onclick="checkAnswer(1, 'A')">A. Pak Prabowo</button>
-                <button onclick="checkAnswer(1, 'B')">B. Andre Taulany</button>
+        <!-- Page 1: Welcome -->
+        <div id="page1" class="page">
+            <div class="marvel-badge">MARVEL STUDIOS</div>
+            <h1>A LOVE STORY</h1>
+            <div class="subtitle">
+                Hey cantik,<br>
+                Udah siap sama apa yang akan muncul setelah ini?
             </div>
-            <div id="msg1" class="message hidden"></div>
+            <button onclick="startJourney()">SIAP!</button>
         </div>
 
-        <!-- Question 2 -->
-        <div id="q2" class="question-block hidden">
-            <div class="question">🌟 Mission 2: Siapa wakil presiden Indonesia sekarang?</div>
-            <div class="options">
-                <button onclick="checkAnswer(2, 'A')">A. Gibran</button>
-                <button onclick="checkAnswer(2, 'B')">B. Lolok</button>
+        <!-- Page 2: Input Nama -->
+        <div id="page2" class="page hidden">
+            <div class="marvel-badge">CHAPTER 1</div>
+            <h1>KENALAN DULU YUK</h1>
+            <div class="question">
+                Silahkan di isi terlebih dahulu nama kamu ya cantik
             </div>
-            <div id="msg2" class="message hidden"></div>
+            <div class="input-group">
+                <input type="text" id="nameInput" placeholder="Tulis nama kamu disini..." maxlength="50">
+            </div>
+            <button onclick="submitName()">LANJUTKAN</button>
         </div>
 
-        <!-- Question 3 -->
-        <div id="q3" class="question-block hidden">
-            <div class="question">💍 Final Mission: Kamu mau ga jadi calon istri abdi?</div>
+        <!-- Page 3: Curhat -->
+        <div id="page3" class="page hidden">
+            <div class="marvel-badge">CHAPTER 2</div>
+            <h1>CERITA YUK</h1>
+            <div class="question" id="curhatQuestion">
+                Gimana kerjaan nya hari ini, ada yang mau di ceritain gaa?
+            </div>
+            <div class="input-group">
+                <textarea id="storyInput" placeholder="Ceritain aja semua disini..."></textarea>
+            </div>
+            <button onclick="submitStory()">LANJUTKAN</button>
+        </div>
+
+        <!-- Page 4: Motivasi -->
+        <div id="page4" class="page hidden">
+            <div class="marvel-badge">POWER UP</div>
+            <h1>TETAP SEMANGAT!</h1>
+            <div class="motivational-box">
+                <div class="question">
+                    Tetap semangat ya cantik.<br>
+                    Aku tau kamu pasti bisa kok kamu pasti kuat,<br>
+                    Tetap semangat dan jangan menyerah. 💪✨
+                </div>
+            </div>
+            <button onclick="nextPage(5)">LANJUTKAN</button>
+        </div>
+
+        <!-- Page 5: Pertanyaan Romantis -->
+        <div id="page5" class="page hidden">
+            <div class="marvel-badge">FINAL QUESTION</div>
+            <h1>THE MOMENT</h1>
+            <div class="question">
+                Kalo 1+1 = 2<br>
+                kalo aku di tambah kamu<br>
+                bisa gak jadi kita? 💕
+            </div>
             <div class="options">
-                <button onclick="checkAnswer(3, 'A')">A. Mau banget</button>
-                <button onclick="checkAnswer(3, 'B')">B. Ya jelas mau lahh</button>
+                <button onclick="finalAnswer()">Mauuu</button>
+                <button onclick="finalAnswer()">Mau bangettt loooo</button>
             </div>
         </div>
 
-        <!-- Final Message -->
-        <div id="final" class="hidden">
-            <div class="final-message">🚀 MISSION ACCOMPLISHED! 🚀</div>
-            
-            <div class="romantic-text">
-                ✨ Kamu adalah bintang paling terang di galaksiku ✨
-            </div>
-            
-            <div class="infinity-text">
-                Di antara miliaran bintang di alam semesta,<br>
-                hanya kamu yang menerangi hidupku 💫
-            </div>
-            
-            <div class="romantic-text">
-                <span class="heart-icon">💚</span> Bersamamu, setiap hari terasa seperti petualangan ke luar angkasa <span class="heart-icon">💜</span>
-            </div>
-            
-            <div class="infinity-text">
-                To Infinity and Beyond bersama kamu! 🚀✨
-            </div>
-            
-            <div class="thank-you-text">
-                Terima kasih sudah mau jadi calon istri <span class="name-highlight">Abdi</span>!<br>
-                <span class="heart-icon">💚💜</span>
+        <!-- Page 6: Final Message -->
+        <div id="page6" class="page hidden">
+            <div class="final-message">
+                <div class="marvel-badge">THE END... OR JUST THE BEGINNING?</div>
+                <div class="final-title">
+                    <span class="heart-effect">💍</span>
+                    MISSION ACCOMPLISHED
+                    <span class="heart-effect">💍</span>
+                </div>
+                <div class="final-text">
+                    <span class="name-highlight" id="finalName"></span>,<br>
+                    bersamamu aku menemukan arti kebahagiaan.<br>
+                    Terima kasih sudah mau jadi milik<br>
+                    <span class="name-highlight">Abdi</span> 💍✨
+                </div>
+                <div style="margin-top: 40px; color: #ffd700; font-size: 20px;">
+                    <span class="heart-effect">❤️</span>
+                    To Infinity and Beyond
+                    <span class="heart-effect">❤️</span>
+                </div>
             </div>
         </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
     <script>
-        // Create stars
-        function createStars() {
-            const container = document.getElementById('starsContainer');
-            for (let i = 0; i < 150; i++) {
-                const star = document.createElement('div');
-                star.classList.add('star');
-                star.style.width = Math.random() * 3 + 'px';
-                star.style.height = star.style.width;
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.animationDelay = Math.random() * 3 + 's';
-                container.appendChild(star);
+        let userName = '';
+        let musicStarted = false;
+
+        // Create particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.width = Math.random() * 4 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = Math.random() * 5 + 5 + 's';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(particle);
             }
         }
 
-        // Create shooting stars
-        function createShootingStar() {
-            const star = document.createElement('div');
-            star.classList.add('shooting-star');
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 50 + '%';
-            document.body.appendChild(star);
+        createParticles();
+
+        function startJourney() {
+            nextPage(2);
+            if (!musicStarted) {
+                playRomanticMusic();
+                musicStarted = true;
+            }
+            createSparks();
+        }
+
+        function submitName() {
+            const input = document.getElementById('nameInput');
+            userName = input.value.trim();
             
-            setTimeout(() => star.remove(), 2000);
+            if (userName === '') {
+                alert('Isi nama dulu ya cantik! 💕');
+                return;
+            }
+            
+            document.getElementById('curhatQuestion').innerHTML = 
+                `Gimana kerjaan nya hari ini <span class="name-highlight">${userName}</span>, ada yang mau di ceritain gaa?`;
+            
+            nextPage(3);
+            createSparks();
         }
 
-        // Create planets
-        function createPlanets() {
-            const colors = ['#8b5cf6', '#6366f1', '#00ff88'];
-            for (let i = 0; i < 3; i++) {
-                const planet = document.createElement('div');
-                planet.classList.add('planet');
-                planet.style.width = Math.random() * 100 + 50 + 'px';
-                planet.style.height = planet.style.width;
-                planet.style.background = colors[i];
-                planet.style.left = Math.random() * 100 + '%';
-                planet.style.top = Math.random() * 100 + '%';
-                planet.style.animationDelay = Math.random() * 3 + 's';
-                document.body.appendChild(planet);
+        function submitStory() {
+            const story = document.getElementById('storyInput').value.trim();
+            
+            if (story === '') {
+                alert('Ceritain dong cantik! 💕');
+                return;
             }
+            
+            nextPage(4);
+            createSparks();
         }
 
-        createStars();
-        createPlanets();
-        setInterval(createShootingStar, 3000);
-
-        let currentQuestion = 1;
-
-        function checkAnswer(questionNum, answer) {
-            const correctAnswers = {
-                1: 'A',
-                2: 'A'
-            };
-
-            if (questionNum === 1 || questionNum === 2) {
-                const msgElement = document.getElementById('msg' + questionNum);
-                
-                if (answer === correctAnswers[questionNum]) {
-                    msgElement.innerHTML = '✓ Mission Complete!';
-                    msgElement.className = 'message success';
-                    msgElement.classList.remove('hidden');
-                    
-                    setTimeout(() => {
-                        document.getElementById('q' + questionNum).classList.add('hidden');
-                        document.getElementById('q' + (questionNum + 1)).classList.remove('hidden');
-                        currentQuestion++;
-                    }, 1000);
-                } else {
-                    msgElement.innerHTML = '✗ Mission Failed! Try again, Space Ranger! 🚀';
-                    msgElement.className = 'message error';
-                    msgElement.classList.remove('hidden');
-                    
-                    setTimeout(() => {
-                        msgElement.classList.add('hidden');
-                    }, 2000);
-                }
-            } else if (questionNum === 3) {
-                document.getElementById('q3').classList.add('hidden');
-                document.getElementById('final').classList.remove('hidden');
-                
-                createRocketShow();
-                playSpaceMusic();
-            }
+        function finalAnswer() {
+            document.getElementById('finalName').textContent = userName;
+            nextPage(6);
+            createMassiveSparks();
         }
 
-        function createRocketShow() {
-            for (let i = 0; i < 10; i++) {
-                setTimeout(() => {
-                    const rocket = document.createElement('div');
-                    rocket.innerHTML = '🚀';
-                    rocket.classList.add('rocket');
-                    rocket.style.left = Math.random() * 100 + '%';
-                    rocket.style.animationDelay = Math.random() * 2 + 's';
-                    document.body.appendChild(rocket);
-                    
-                    setTimeout(() => rocket.remove(), 3000);
-                }, i * 300);
-            }
+        function nextPage(pageNum) {
+            document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
+            document.getElementById('page' + pageNum).classList.remove('hidden');
+        }
 
-            // Extra shooting stars
+        function createSparks() {
             for (let i = 0; i < 20; i++) {
-                setTimeout(createShootingStar, i * 200);
+                setTimeout(() => {
+                    const spark = document.createElement('div');
+                    spark.classList.add('spark');
+                    spark.style.left = '50%';
+                    spark.style.top = '50%';
+                    
+                    const angle = (Math.PI * 2 * i) / 20;
+                    const distance = 100 + Math.random() * 100;
+                    spark.style.setProperty('--tx', Math.cos(angle) * distance + 'px');
+                    spark.style.setProperty('--ty', Math.sin(angle) * distance + 'px');
+                    
+                    document.body.appendChild(spark);
+                    setTimeout(() => spark.remove(), 2000);
+                }, i * 50);
             }
         }
 
-        function playSpaceMusic() {
+        function createMassiveSparks() {
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const spark = document.createElement('div');
+                    spark.classList.add('spark');
+                    spark.style.left = Math.random() * 100 + '%';
+                    spark.style.top = Math.random() * 100 + '%';
+                    spark.style.width = Math.random() * 6 + 3 + 'px';
+                    spark.style.height = spark.style.width;
+                    
+                    const distance = 150 + Math.random() * 150;
+                    const angle = Math.random() * Math.PI * 2;
+                    spark.style.setProperty('--tx', Math.cos(angle) * distance + 'px');
+                    spark.style.setProperty('--ty', Math.sin(angle) * distance + 'px');
+                    
+                    document.body.appendChild(spark);
+                    setTimeout(() => spark.remove(), 2000);
+                }, i * 30);
+            }
+        }
+
+        function playRomanticMusic() {
             const synth = new Tone.PolySynth(Tone.Synth, {
                 oscillator: { type: 'sine' },
                 envelope: {
-                    attack: 0.1,
+                    attack: 0.2,
                     decay: 0.3,
-                    sustain: 0.5,
-                    release: 1
+                    sustain: 0.6,
+                    release: 1.5
                 }
             }).toDestination();
 
-            // Space-themed melody
+            // Romantic melody
             const melody = [
-                ['C5', 'E5', 'G5'],
-                ['D5', 'F5', 'A5'],
-                ['E5', 'G5', 'B5'],
-                ['C5', 'E5', 'G5'],
-                ['G5', 'B5', 'D6']
+                ['C4', 'E4', 'G4'],
+                ['D4', 'F4', 'A4'],
+                ['E4', 'G4', 'B4'],
+                ['C4', 'E4', 'G4'],
+                ['F4', 'A4', 'C5'],
+                ['G4', 'B4', 'D5'],
+                ['E4', 'G4', 'C5'],
+                ['C4', 'E4', 'G4']
             ];
 
             let noteIndex = 0;
             
             Tone.Transport.scheduleRepeat((time) => {
-                synth.triggerAttackRelease(melody[noteIndex % melody.length], '1n', time);
+                synth.triggerAttackRelease(melody[noteIndex % melody.length], '1.5n', time);
                 noteIndex++;
-            }, '1n');
+            }, '1.5n');
 
             Tone.Transport.start();
         }
