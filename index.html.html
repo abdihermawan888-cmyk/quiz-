@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertanyaan Untukmu 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffe5f1 50%, #ffd6eb 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            animation: float 6s infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            background: white;
+            padding: 50px 60px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            color: #ff1493;
+            font-size: 28px;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.2);
+        }
+
+        .question {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background: linear-gradient(135deg, #ff6b9d 0%, #ff1493 100%);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.3);
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.4);
+        }
+
+        button:active {
+            transform: translateY(-1px);
+        }
+
+        .message {
+            font-size: 20px;
+            margin-top: 20px;
+            font-weight: 600;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .success {
+            color: #00c853;
+        }
+
+        .error {
+            color: #ff1744;
+        }
+
+        .final-message {
+            font-size: 32px;
+            color: #ff1493;
+            margin: 30px 0;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.1);
+            }
+            50% {
+                transform: scale(1);
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .hearts-explosion {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-explosion" id="heartsExplosion"></div>
+
+    <div class="container">
+        <h1>Jawab Pertanyaan Ini Yaa 💕</h1>
+        
+        <!-- Question 1 -->
+        <div id="q1" class="question-block">
+            <div class="question">Siapa presiden Indonesia sekarang?</div>
+            <div class="options">
+                <button onclick="checkAnswer(1, 'A')">A. Pak Prabowo</button>
+                <button onclick="checkAnswer(1, 'B')">B. Andre Taulany</button>
+            </div>
+            <div id="msg1" class="message hidden"></div>
+        </div>
+
+        <!-- Question 2 -->
+        <div id="q2" class="question-block hidden">
+            <div class="question">Siapa wakil presiden Indonesia sekarang?</div>
+            <div class="options">
+                <button onclick="checkAnswer(2, 'A')">A. Gibran</button>
+                <button onclick="checkAnswer(2, 'B')">B. Lolok</button>
+            </div>
+            <div id="msg2" class="message hidden"></div>
+        </div>
+
+        <!-- Question 3 -->
+        <div id="q3" class="question-block hidden">
+            <div class="question">Kamu mau gak jadi pacar aku? 💖</div>
+            <div class="options">
+                <button onclick="checkAnswer(3, 'A')">A. Mau banget</button>
+                <button onclick="checkAnswer(3, 'B')">B. Mau kali</button>
+            </div>
+        </div>
+
+        <!-- Final Message -->
+        <div id="final" class="hidden">
+            <div class="final-message">Yay! Aku bahagia banget! 💕✨</div>
+            <div class="question">Terima kasih sudah mau jadi pacarku! 🥰</div>
+        </div>
+    </div>
+
+    <audio id="romanticMusic" loop>
+        <source src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js" type="audio/mpeg">
+    </audio>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <script>
+        // Create floating hearts background
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '💖';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        setInterval(createHeart, 800);
+
+        let currentQuestion = 1;
+
+        function checkAnswer(questionNum, answer) {
+            const correctAnswers = {
+                1: 'A',
+                2: 'A'
+            };
+
+            if (questionNum === 1 || questionNum === 2) {
+                const msgElement = document.getElementById('msg' + questionNum);
+                
+                if (answer === correctAnswers[questionNum]) {
+                    msgElement.innerHTML = '✓ Berhasil!';
+                    msgElement.className = 'message success';
+                    msgElement.classList.remove('hidden');
+                    
+                    setTimeout(() => {
+                        document.getElementById('q' + questionNum).classList.add('hidden');
+                        document.getElementById('q' + (questionNum + 1)).classList.remove('hidden');
+                        currentQuestion++;
+                    }, 1000);
+                } else {
+                    msgElement.innerHTML = '✗ Waduh salah! Coba lagi yaa 😊';
+                    msgElement.className = 'message error';
+                    msgElement.classList.remove('hidden');
+                    
+                    setTimeout(() => {
+                        msgElement.classList.add('hidden');
+                    }, 2000);
+                }
+            } else if (questionNum === 3) {
+                document.getElementById('q3').classList.add('hidden');
+                document.getElementById('final').classList.remove('hidden');
+                
+                // Create hearts explosion
+                createHeartsExplosion();
+                
+                // Play romantic music using Tone.js
+                playRomanticMelody();
+            }
+        }
+
+        function createHeartsExplosion() {
+            const explosion = document.getElementById('heartsExplosion');
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.innerHTML = '💕';
+                    heart.style.position = 'absolute';
+                    heart.style.fontSize = (Math.random() * 30 + 20) + 'px';
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.top = '-50px';
+                    heart.style.animation = 'float 4s ease-in forwards';
+                    explosion.appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 4000);
+                }, i * 100);
+            }
+        }
+
+        function playRomanticMelody() {
+            const synth = new Tone.PolySynth(Tone.Synth, {
+                oscillator: { type: 'sine' },
+                envelope: {
+                    attack: 0.1,
+                    decay: 0.3,
+                    sustain: 0.4,
+                    release: 1
+                }
+            }).toDestination();
+
+            const melody = [
+                ['C4', 'E4', 'G4'],
+                ['D4', 'F4', 'A4'],
+                ['E4', 'G4', 'B4'],
+                ['C4', 'E4', 'G4']
+            ];
+
+            let noteIndex = 0;
+            
+            Tone.Transport.scheduleRepeat((time) => {
+                synth.triggerAttackRelease(melody[noteIndex % melody.length], '2n', time);
+                noteIndex++;
+            }, '1n');
+
+            Tone.Transport.start();
+        }
+    </script>
+</body>
+</html>
