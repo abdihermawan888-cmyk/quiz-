@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pertanyaan Untukmu 💕</title>
+    <title>To Infinity and Beyond! 🚀</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
@@ -12,61 +14,108 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #ffeef8 0%, #ffe5f1 50%, #ffd6eb 100%);
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1a3e 25%, #2d1b4e 50%, #1a1a3e 75%, #0a0e27 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
             overflow: hidden;
+            animation: galaxyShift 20s ease-in-out infinite;
         }
 
-        .heart {
+        @keyframes galaxyShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .stars {
             position: absolute;
-            font-size: 30px;
-            animation: float 6s infinite;
-            opacity: 0.6;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
         }
 
-        @keyframes float {
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        .shooting-star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+            animation: shoot 2s linear infinite;
+        }
+
+        @keyframes shoot {
             0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            50% {
-                opacity: 0.6;
+                transform: translateX(0) translateY(0);
+                opacity: 1;
             }
             100% {
-                transform: translateY(-100vh) rotate(360deg);
+                transform: translateX(-300px) translateY(300px);
                 opacity: 0;
             }
         }
 
         .container {
-            background: white;
+            background: rgba(20, 20, 50, 0.9);
             padding: 50px 60px;
             border-radius: 30px;
-            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3);
+            border: 3px solid #00ff88;
+            box-shadow: 0 0 50px rgba(0, 255, 136, 0.4), 
+                        inset 0 0 30px rgba(138, 43, 226, 0.2);
             text-align: center;
-            max-width: 600px;
+            max-width: 650px;
             width: 90%;
             position: relative;
             z-index: 10;
+            backdrop-filter: blur(10px);
+        }
+
+        .buzz-logo {
+            font-size: 18px;
+            color: #00ff88;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.8);
         }
 
         h1 {
-            color: #ff1493;
-            font-size: 28px;
-            margin-bottom: 40px;
-            text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.2);
+            color: #00ff88;
+            font-size: 32px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 30px rgba(0, 255, 136, 0.6),
+                         0 0 60px rgba(138, 43, 226, 0.4);
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            color: #a78bfa;
+            font-size: 16px;
+            margin-bottom: 35px;
+            font-weight: 400;
         }
 
         .question {
             font-size: 24px;
-            color: #333;
-            margin-bottom: 30px;
-            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 35px;
+            font-weight: 700;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
         }
 
         .options {
@@ -77,53 +126,123 @@
         }
 
         button {
-            background: linear-gradient(135deg, #ff6b9d 0%, #ff1493 100%);
+            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
             color: white;
-            border: none;
-            padding: 18px 40px;
+            border: 2px solid #00ff88;
+            padding: 20px 40px;
             font-size: 18px;
-            border-radius: 50px;
+            border-radius: 15px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-weight: 600;
-            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.3);
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 25px rgba(138, 43, 226, 0.4),
+                        0 0 20px rgba(0, 255, 136, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        button:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.4);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 40px rgba(138, 43, 226, 0.6),
+                        0 0 40px rgba(0, 255, 136, 0.5);
+            border-color: #a78bfa;
         }
 
         button:active {
-            transform: translateY(-1px);
+            transform: translateY(-2px) scale(1.02);
         }
 
         .message {
-            font-size: 20px;
-            margin-top: 20px;
-            font-weight: 600;
+            font-size: 22px;
+            margin-top: 25px;
+            font-weight: 700;
             animation: fadeIn 0.5s ease;
+            text-shadow: 0 0 10px currentColor;
         }
 
         .success {
-            color: #00c853;
+            color: #00ff88;
+            text-shadow: 0 0 20px #00ff88;
         }
 
         .error {
-            color: #ff1744;
+            color: #ff4757;
+            text-shadow: 0 0 20px #ff4757;
         }
 
         .final-message {
-            font-size: 32px;
-            color: #ff1493;
-            margin: 30px 0;
-            animation: heartbeat 1.5s infinite;
+            font-size: 36px;
+            color: #00ff88;
+            margin: 30px 0 20px 0;
+            animation: pulse 2s infinite;
+            text-shadow: 0 0 30px #00ff88,
+                         0 0 60px #8b5cf6;
+            font-weight: 900;
+        }
+
+        .romantic-text {
+            color: #ffd700;
+            font-size: 22px;
+            margin: 25px 0;
+            font-weight: 600;
+            line-height: 1.6;
+            text-shadow: 0 0 15px #ffd700;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        .infinity-text {
+            color: #a78bfa;
+            font-size: 24px;
+            margin: 20px 0;
+            font-weight: 700;
+            text-shadow: 0 0 20px #a78bfa;
+            line-height: 1.5;
+        }
+
+        .thank-you-text {
+            color: #ffffff;
+            font-size: 20px;
+            margin-top: 25px;
+            font-weight: 600;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        .name-highlight {
+            color: #00ff88;
+            font-weight: 900;
+            text-shadow: 0 0 25px #00ff88;
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 15px #ffd700; }
+            50% { text-shadow: 0 0 30px #ffd700, 0 0 50px #ffd700; }
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(-10px);
+                transform: translateY(-20px);
             }
             to {
                 opacity: 1;
@@ -131,15 +250,12 @@
             }
         }
 
-        @keyframes heartbeat {
+        @keyframes pulse {
             0%, 100% {
                 transform: scale(1);
             }
-            25% {
-                transform: scale(1.1);
-            }
             50% {
-                transform: scale(1);
+                transform: scale(1.1);
             }
         }
 
@@ -147,26 +263,76 @@
             display: none;
         }
 
-        .hearts-explosion {
+        .rocket {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            font-size: 40px;
+            animation: flyRocket 3s ease-in-out infinite;
             pointer-events: none;
-            z-index: 100;
+        }
+
+        @keyframes flyRocket {
+            0% {
+                transform: translateX(-100px) translateY(100vh) rotate(-45deg);
+            }
+            100% {
+                transform: translateX(100vw) translateY(-100px) rotate(-45deg);
+            }
+        }
+
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .glow-ring {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border: 3px solid #00ff88;
+            border-radius: 50%;
+            top: -75px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: rotate 10s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes rotate {
+            from { transform: translateX(-50%) rotate(0deg); }
+            to { transform: translateX(-50%) rotate(360deg); }
+        }
+
+        .heart-icon {
+            display: inline-block;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(1); }
         }
     </style>
 </head>
 <body>
-    <div class="hearts-explosion" id="heartsExplosion"></div>
+    <div class="stars" id="starsContainer"></div>
 
     <div class="container">
-        <h1>Jawab Pertanyaan Ini Yaa 💕</h1>
+        <div class="glow-ring"></div>
+        <div class="buzz-logo">⭐ Space Ranger Mission ⭐</div>
+        <h1>TO INFINITY AND BEYOND! 🚀</h1>
+        <div class="subtitle">Complete the mission, Space Ranger!</div>
         
         <!-- Question 1 -->
         <div id="q1" class="question-block">
-            <div class="question">Siapa presiden Indonesia sekarang?</div>
+            <div class="question">🌟 Mission 1: Siapa presiden Indonesia sekarang?</div>
             <div class="options">
                 <button onclick="checkAnswer(1, 'A')">A. Pak Prabowo</button>
                 <button onclick="checkAnswer(1, 'B')">B. Andre Taulany</button>
@@ -176,7 +342,7 @@
 
         <!-- Question 2 -->
         <div id="q2" class="question-block hidden">
-            <div class="question">Siapa wakil presiden Indonesia sekarang?</div>
+            <div class="question">🌟 Mission 2: Siapa wakil presiden Indonesia sekarang?</div>
             <div class="options">
                 <button onclick="checkAnswer(2, 'A')">A. Gibran</button>
                 <button onclick="checkAnswer(2, 'B')">B. Lolok</button>
@@ -186,42 +352,88 @@
 
         <!-- Question 3 -->
         <div id="q3" class="question-block hidden">
-            <div class="question">Kamu mau gak jadi pacar aku? 💖</div>
+            <div class="question">💍 Final Mission: Kamu mau ga jadi calon istri abdi?</div>
             <div class="options">
                 <button onclick="checkAnswer(3, 'A')">A. Mau banget</button>
-                <button onclick="checkAnswer(3, 'B')">B. Mau kali</button>
+                <button onclick="checkAnswer(3, 'B')">B. Ya jelas mau lahh</button>
             </div>
         </div>
 
         <!-- Final Message -->
         <div id="final" class="hidden">
-            <div class="final-message">Yay! Aku bahagia banget! 💕✨</div>
-            <div class="question">Terima kasih sudah mau jadi pacarku! 🥰</div>
+            <div class="final-message">🚀 MISSION ACCOMPLISHED! 🚀</div>
+            
+            <div class="romantic-text">
+                ✨ Kamu adalah bintang paling terang di galaksiku ✨
+            </div>
+            
+            <div class="infinity-text">
+                Di antara miliaran bintang di alam semesta,<br>
+                hanya kamu yang menerangi hidupku 💫
+            </div>
+            
+            <div class="romantic-text">
+                <span class="heart-icon">💚</span> Bersamamu, setiap hari terasa seperti petualangan ke luar angkasa <span class="heart-icon">💜</span>
+            </div>
+            
+            <div class="infinity-text">
+                To Infinity and Beyond bersama kamu! 🚀✨
+            </div>
+            
+            <div class="thank-you-text">
+                Terima kasih sudah mau jadi calon istri <span class="name-highlight">Abdi</span>!<br>
+                <span class="heart-icon">💚💜</span>
+            </div>
         </div>
     </div>
 
-    <audio id="romanticMusic" loop>
-        <source src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js" type="audio/mpeg">
-    </audio>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
     <script>
-        // Create floating hearts background
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.innerHTML = '💖';
-            heart.style.left = Math.random() * 100 + '%';
-            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
-            heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
-            document.body.appendChild(heart);
-            
-            setTimeout(() => {
-                heart.remove();
-            }, 6000);
+        // Create stars
+        function createStars() {
+            const container = document.getElementById('starsContainer');
+            for (let i = 0; i < 150; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                star.style.width = Math.random() * 3 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                container.appendChild(star);
+            }
         }
 
-        setInterval(createHeart, 800);
+        // Create shooting stars
+        function createShootingStar() {
+            const star = document.createElement('div');
+            star.classList.add('shooting-star');
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 50 + '%';
+            document.body.appendChild(star);
+            
+            setTimeout(() => star.remove(), 2000);
+        }
+
+        // Create planets
+        function createPlanets() {
+            const colors = ['#8b5cf6', '#6366f1', '#00ff88'];
+            for (let i = 0; i < 3; i++) {
+                const planet = document.createElement('div');
+                planet.classList.add('planet');
+                planet.style.width = Math.random() * 100 + 50 + 'px';
+                planet.style.height = planet.style.width;
+                planet.style.background = colors[i];
+                planet.style.left = Math.random() * 100 + '%';
+                planet.style.top = Math.random() * 100 + '%';
+                planet.style.animationDelay = Math.random() * 3 + 's';
+                document.body.appendChild(planet);
+            }
+        }
+
+        createStars();
+        createPlanets();
+        setInterval(createShootingStar, 3000);
 
         let currentQuestion = 1;
 
@@ -235,7 +447,7 @@
                 const msgElement = document.getElementById('msg' + questionNum);
                 
                 if (answer === correctAnswers[questionNum]) {
-                    msgElement.innerHTML = '✓ Berhasil!';
+                    msgElement.innerHTML = '✓ Mission Complete!';
                     msgElement.className = 'message success';
                     msgElement.classList.remove('hidden');
                     
@@ -245,7 +457,7 @@
                         currentQuestion++;
                     }, 1000);
                 } else {
-                    msgElement.innerHTML = '✗ Waduh salah! Coba lagi yaa 😊';
+                    msgElement.innerHTML = '✗ Mission Failed! Try again, Space Ranger! 🚀';
                     msgElement.className = 'message error';
                     msgElement.classList.remove('hidden');
                     
@@ -257,54 +469,55 @@
                 document.getElementById('q3').classList.add('hidden');
                 document.getElementById('final').classList.remove('hidden');
                 
-                // Create hearts explosion
-                createHeartsExplosion();
-                
-                // Play romantic music using Tone.js
-                playRomanticMelody();
+                createRocketShow();
+                playSpaceMusic();
             }
         }
 
-        function createHeartsExplosion() {
-            const explosion = document.getElementById('heartsExplosion');
-            for (let i = 0; i < 50; i++) {
+        function createRocketShow() {
+            for (let i = 0; i < 10; i++) {
                 setTimeout(() => {
-                    const heart = document.createElement('div');
-                    heart.innerHTML = '💕';
-                    heart.style.position = 'absolute';
-                    heart.style.fontSize = (Math.random() * 30 + 20) + 'px';
-                    heart.style.left = Math.random() * 100 + '%';
-                    heart.style.top = '-50px';
-                    heart.style.animation = 'float 4s ease-in forwards';
-                    explosion.appendChild(heart);
+                    const rocket = document.createElement('div');
+                    rocket.innerHTML = '🚀';
+                    rocket.classList.add('rocket');
+                    rocket.style.left = Math.random() * 100 + '%';
+                    rocket.style.animationDelay = Math.random() * 2 + 's';
+                    document.body.appendChild(rocket);
                     
-                    setTimeout(() => heart.remove(), 4000);
-                }, i * 100);
+                    setTimeout(() => rocket.remove(), 3000);
+                }, i * 300);
+            }
+
+            // Extra shooting stars
+            for (let i = 0; i < 20; i++) {
+                setTimeout(createShootingStar, i * 200);
             }
         }
 
-        function playRomanticMelody() {
+        function playSpaceMusic() {
             const synth = new Tone.PolySynth(Tone.Synth, {
                 oscillator: { type: 'sine' },
                 envelope: {
                     attack: 0.1,
                     decay: 0.3,
-                    sustain: 0.4,
+                    sustain: 0.5,
                     release: 1
                 }
             }).toDestination();
 
+            // Space-themed melody
             const melody = [
-                ['C4', 'E4', 'G4'],
-                ['D4', 'F4', 'A4'],
-                ['E4', 'G4', 'B4'],
-                ['C4', 'E4', 'G4']
+                ['C5', 'E5', 'G5'],
+                ['D5', 'F5', 'A5'],
+                ['E5', 'G5', 'B5'],
+                ['C5', 'E5', 'G5'],
+                ['G5', 'B5', 'D6']
             ];
 
             let noteIndex = 0;
             
             Tone.Transport.scheduleRepeat((time) => {
-                synth.triggerAttackRelease(melody[noteIndex % melody.length], '2n', time);
+                synth.triggerAttackRelease(melody[noteIndex % melody.length], '1n', time);
                 noteIndex++;
             }, '1n');
 
